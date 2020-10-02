@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}Accueil{% endblock title %}
+
+{% block li_home %}
+  <li class="nav-item active px-lg-4">
+    <a id="home_link" class="nav-link text-uppercase text-expanded" href="{% url 'home' %}">Accueil
+      <span class="sr-only">(current)</span>
+    </a>
+  </li>
+{% endblock li_home %}
+
+{% block section_one %}
+  <section id="section_one" class="page-section cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <div class="cta-inner text-center rounded">
+            <h2 class="section-heading mb-4">
+              <span id="custom_welcome" class="section-heading-lower">Bienvenue {{ user.first_name }}</span>
+              <span class="section-heading-upper">sur le site de la Team Spirit !</span>
+            </h2>
+            <p class="mb-0">Ce site web est destiné à partager et diffuser des informations entre les adhérents de notre association, n'hésitez pas à l'utiliser !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock section_one %}
+
+{% block section_two %}
+  <section id="section_two" class="page-section clearfix">
+    <div class="container">
+      <div class="introReverse">
+        <img class="introReverse-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'img/ekiden19.png' %}" alt="Ekiden 2019">
+        <div class="introReverse-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4">
+            <span class="section-heading-lower">Événements</span>
+          </h2>
+          <p class="mb-3">Venez découvrir ce qui vous attend ou consulter les événements passés !</p>
+          <div class="introReverse-button mx-auto">
+            <a class="btn btn-primary btn-xl" href="{% url 'events:events' %}">Voir les événements</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock section_two %}
+
+{% block section_three %}
+  <section id="section_three" class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'img/training18.jpg' %}" alt="Entraînement en groupe">
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4">
+            <span class="section-heading-lower">Entraînements</span>
+          </h2>
+          <p class="mb-3">Venez participer aux entraînements proposés par les adhérents de l'association !</p>
+          <div class="intro-button mx-auto">
+            <a class="btn btn-primary btn-xl" href="{% url 'trainings:trainings' %}">Voir les entraînements</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock section_three %}
+
+{% block section_four %}
+  <section id="section_four" class="page-section clearfix">
+    <div class="container">
+      <div class="introReverse">
+        <img class="introReverse-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'img/catalogue.png' %}" alt="Vêtements floqués">
+        <div class="introReverse-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4">
+            <span class="section-heading-lower">Catalogue</span>
+          </h2>
+          <p class="mb-3">N'hésitez pas à consulter la liste des vêtements floqués qui vous sont proposés !</p>
+          <div class="introReverse-button mx-auto">
+            <a class="btn btn-primary btn-xl" href="{% url 'catalogs:catalog' %}">Voir le catalogue</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock section_four %}
+
+{% block section_five %}
+
+{% endblock section_five %}

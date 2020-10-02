@@ -1,0 +1,19 @@
+# .coveragerc to control coverage.py
+[run]
+command_line = "manage.py" test
+source = . 
+
+[report]
+# Regexes for lines to exclude from consideration
+omit =
+    tests*
+    *migrations*
+    runtests.py
+    *apps.py
+    *wsgi*
+    *asgi*
+    *site-packages*
+    merge_production_dotenvs_in_dotenv.py
+    config/*
+
+ignore_errors = True

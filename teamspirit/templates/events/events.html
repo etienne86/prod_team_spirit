@@ -1,0 +1,24 @@
+{% extends "events/base.html" %}
+{% load static i18n %}
+
+{% block title %}Événements{% endblock title %}
+
+{% block section_one %}
+<section id="section_one">
+  <div class="container p-3">
+    <div class="row">
+      {% for event in object_list %}
+        <div class="col">
+          <div class="card h-100">
+            <p>{{ event.name }}</p>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col">  
+          <p class="text-center">Aucun événement n'est actuellement répertorié !</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock section_one %}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+{% load static i18n %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Team Spirit - {% block title %}{% endblock title %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+  <link rel="icon" type="image/x-icon" href="{% static 'img/favicons/favicon.png' %}">
+
+  {% block css %}
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Your stuff: Third-party CSS libraries go here -->
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+  <link href="{% static 'css/business-casual.min.css' %}" rel="stylesheet">
+
+  <!-- This file stores project-specific CSS -->
+  <link href="{% static 'css/custom-style.css' %}" rel="stylesheet">
+
+  <!-- <link href="{% static 'css/project.min.css' %}" rel="stylesheet"> -->
+
+
+  {% endblock css %}
+
+</head>
+
+<body>
+
+  {% block page_title %}
+  <h1 class="site-heading text-center text-primary d-none d-lg-block">
+    <span class="site-heading-lower">Team Spirit</span>
+    <span class="site-heading-upper mb-3">Pour les adhérents</span>
+  </h1>
+  {% endblock page_title %}
+
+  <!-- Navigation -->
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="/">Team Spirit</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto custom-nowrap">
+            {% block li_home %}
+              <li class="nav-item px-lg-4">
+                <a id="home_link" class="nav-link text-uppercase text-expanded" href="{% url 'home' %}">Accueil</a>
+              </li>
+            {% endblock li_home %}
+            {% block li_events %}
+              <li class="nav-item px-lg-4">
+                <a id="events_link" class="nav-link text-uppercase text-expanded" href="{% url 'events:events' %}">Événements</a>
+              </li>
+            {% endblock li_events %}
+            {% block li_trainings %}
+            <li class="nav-item px-lg-4">
+              <a id="trainings_link" class="nav-link text-uppercase text-expanded" href="{% url 'trainings:trainings' %}">Entraînements</a>
+            </li>
+            {% endblock li_trainings %}
+            {% block li_catalog %}
+            <li class="nav-item px-lg-4">
+              <a id="catalog_link" class="nav-link text-uppercase text-expanded" href="{% url 'catalogs:catalog' %}">Catalogue</a>
+            </li>
+            {% endblock li_catalog %}
+            {% block li_private_space %}
+            <li class="nav-item px-lg-4">
+              <a id="private_space_link" class="nav-link text-uppercase text-expanded" href="{% url 'profiles:profile' %}">Mon espace</a>
+            </li>
+            {% endblock li_private_space %}
+            {% block li_logout %}
+            <li class="nav-item px-lg-4">
+              <a id="logout_link" class="nav-link text-uppercase text-expanded" href="{% url 'users:logout' %}">Déconnexion</a>
+            </li>
+            {% endblock li_logout %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  {% block section_one %}{% endblock section_one %}
+
+  {% block section_two %}{% endblock section_two %}
+
+  {% block section_three %}{% endblock section_three %}
+
+  {% block section_four %}
+
+  {% endblock section_four %}
+
+  {% block section_five %}
+
+  {% endblock section_five %}
+
+  <footer class="footer text-faded text-center py-5">
+    <div class="container">
+      <ul class="list-inline mb-0">
+        <li class="nav-item px-lg-4 list-inline-item">
+          <p class="m-0 small">Copyright &copy; Team Spirit 2020</p>
+        </li>
+        {% block li_legal %}
+        <li class="nav-item px-lg-4 list-inline-item">
+          <a class="nav-link text-expanded" href="{% url 'legal' %}">Mentions légales</a>
+        </li>
+        {% endblock li_legal %}
+        {% block li_contact %}
+        <li class="nav-item px-lg-4 list-inline-item">
+          <a class="nav-link text-expanded" href="{% url 'contact' %}">Nous contacter</a>
+        </li>
+        {% endblock li_contact %}
+      </ul>
+    </div>
+  </footer>
+
+  {% block js %}
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  {% endblock js %}
+
+</body>
+
+</html>

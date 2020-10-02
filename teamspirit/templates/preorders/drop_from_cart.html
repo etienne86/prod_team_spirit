@@ -1,0 +1,53 @@
+{% extends "catalogs/base.html" %}
+{% load static i18n %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Suppression de produit{% endblock title %}
+
+{% block section_one %}
+<section id="section_one">
+  <div class="container p-0">
+    <div class="row">
+      <div class="col p-4">
+        <div class="row">
+          <div class="col text-center">
+            <p>Souhaitez-vous supprimer cette ligne de votre panier ?</p>
+          </div>
+        </div>
+        <div class="card p-3">
+          <div class="row">
+            <div class="col-12 col-lg-4 text-center">
+              {% if shopping_cart_line.product.image %}
+                <a href="{{ shopping_cart_line.product.image.url }}">
+                  <img class="p-0 img-fluid" src="{{ shopping_cart_line.product.image.url }}" alt="(photo manquante)" />
+                </a>
+              {% endif %}
+            </div>
+            <div class="col-12 col-lg-8 text-left">
+              <h3>{{ shopping_cart_line.product.name }}</h3>
+              <p>
+                Taille : {{ shopping_cart_line.size }}<br/>
+                Prix unitaire : {{ shopping_cart_line.product.price }} €<br/>
+                Quantité : {{ shopping_cart_line.quantity }}<br/>
+                Montant de la ligne : {{ shopping_cart_line.get_line_amount }} €
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col p-4">
+            <form method="post">
+            {% csrf_token %}
+            {% crispy form %}
+            <div class="text-center">
+                <a id="cancel_link" href="{% url 'preorders:shopping_cart' %}">Annuler</a>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock section_one %}

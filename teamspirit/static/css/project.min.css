@@ -1,0 +1,69 @@
+/* maintain footer at bottom */
+
+html, body
+{
+  height: 100% !important;
+  margin: 0;
+}
+
+body{ 
+  display:flex; 
+  flex-direction:column; 
+}
+
+footer{
+  margin-top:auto; 
+}
+
+
+/* home page rendering */
+
+.custom-nowrap {
+  white-space: nowrap;
+}
+
+@media all and (max-width: 575px) /*for xs screens*/
+{
+  h2 .section-heading-lower {
+    font-size: 80% !important;
+  }
+}
+
+
+/* custom forms rendering */
+
+.asteriskField {
+  display: none;
+}
+
+
+/* display picture and text */
+
+.introReverse {
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .introReverse .introReverse-img {
+    width: 75%;
+    float: left;
+  }
+  .introReverse .introReverse-text {
+    right: 0;
+    width: 60%;
+    margin-top: 3rem;
+    position: absolute;
+  }
+  .introReverse .introReverse-text .introReverse-button {
+    width: 100%;
+    right: 0;
+    position: absolute;
+    bottom: -2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .introReverse .introReverse-text {
+    width: 45%;
+  }
+}

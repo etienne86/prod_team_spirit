@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block section_one %}
+<section id="section_one">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <p class="my-3 text-center">Si vous souhaitez contacter le bureau de l'association, n'hésitez pas à nous envoyer un mail : <a href="mailto:teamspirit.orange@gmail.com" title="mailto:teamspirit.orange@gmail.com">teamspirit.orange@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock section_one %}
+
+{% block li_contact %}
+  <li class="nav-item px-lg-4 active list-inline-item">
+    <a class="nav-link text-expanded" href="{% url 'contact' %}">Nous contacter</a>
+  </li>
+{% endblock li_contact %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}Déconnexion{% endblock title %}
+
+{% block li_logout %}
+<li class="nav-item active px-lg-4">
+  <a id="logout_link" class="nav-link text-uppercase text-expanded" href="{% url 'users:logout' %}">Déconnexion
+    <span class="sr-only">(current)</span>
+  </a>
+</li>
+{% endblock li_logout %}
+
+{% block section_one %}
+  <section>
+    <div class="container my-3">
+      <div class="card text-center border-solid">
+        <div class="card-body">
+          <p>Vous êtes bien déconnecté(e)</p>
+          <a class="btn btn-primary" href="{% url 'users:login' %}">Accéder au site</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock section_one %}

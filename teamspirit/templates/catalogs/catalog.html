@@ -1,0 +1,45 @@
+{% extends "catalogs/base.html" %}
+{% load static i18n %}
+
+{% block title %}Catalogue{% endblock title %}
+
+{% block section_one %}
+<section id="section_one">
+  <div class="container p-0">
+    <div class="row">
+      <div class="col text-center pt-3">
+        <a href="{% url 'preorders:shopping_cart' %}">Voir mon panier</a>
+      </div>
+    </div>
+    <div class="row">
+    {% for product in object_list %}
+      <div class="col-12 col-sm-4 p-4">
+        <div class="card h-100">
+          <div class="row">
+            <div class="col-12 text-center">
+              <a href="{% if product.image %}{{ product.image.url }}{% endif %}">
+                <img class="p-0 img-fluid" src="{% if product.image %}{{ product.image.url }}{% endif %}" alt="(photo manquante)" />
+              </a>
+              <div class="card-body">
+                <div class="text-center">
+                  <a href="{% if product.image %}{{ product.image.url }}{% endif %}">
+                    <p class="card-text text-muted">
+                      {% if product.name %}{{ product.name }}{% else %}(nom manquant){% endif %}
+                    </p>
+                  </a>
+                </div>
+                <div class="text-center">
+                  <a class="btn btn-primary" href="{% url 'preorders:add_to_cart' product.id %}">Ajouter au panier</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>Aucun produit ne figure dans ce catalogue !</p>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock section_one %}

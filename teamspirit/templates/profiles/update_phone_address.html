@@ -1,0 +1,33 @@
+{% extends "profiles/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Mise à jour des coordonnées{% endblock title %}
+
+{% block section_one %}
+  <section>
+    <div class="container my-3">
+      <div class="card text-center border-solid">
+        <div class="card-body">
+          <h1 class="text-primary text-center">Mes coordonnées</h1>
+          <form class="mb-3" action="{% url 'profiles:update_phone_address' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+              <legend>Téléphone</legend>
+              {% crispy phone_form %}
+            </fieldset>
+            <fieldset>
+              <legend>Adresse</legend>
+              {% crispy address_form %}
+            </fieldset>
+              <legend>Confidentialité</legend>
+              {% crispy confidentiality_form %}
+            </fieldset>
+            <input id="submit-phone-address-form" type="submit" class="btn btn-primary" value="Mettre à jour">
+          </form>
+          <a href="{% url 'profiles:profile' %}">Annuler</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock section_one %}

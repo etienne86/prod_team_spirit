@@ -1,0 +1,22 @@
+{% extends "trainings/base.html" %}
+{% load static i18n %}
+
+{% block section_one %}
+<section id="section_one">
+  <div class="container p-3">
+    <div class="row">
+      {% for training in object_list %}
+        <div class="col">
+          <div class="card h-100">
+            <p>Entraînement proposé par {{ training.trainer }}</p>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col">  
+          <p class="text-center">Aucun entraînement n'est actuellement programmé !</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock section_one %}

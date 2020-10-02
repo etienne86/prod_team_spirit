@@ -1,0 +1,22 @@
+{% extends "profiles/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Mise à jour de la pièce d'identité{% endblock title %}
+
+{% block section_one %}
+  <section>
+    <div class="container my-3">
+      <div class="card text-center border-solid">
+        <div class="card-body">
+          <h1 class="text-primary text-center">Pièce d'identité</h1>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% crispy form %}
+          </form>
+          <a href="{% url 'profiles:profile' %}">Annuler</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock section_one %}

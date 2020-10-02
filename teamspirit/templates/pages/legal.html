@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}Mentions légales{% endblock title %}
+
+{% block section_one %}
+<section id="section_one">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <p class="my-3 text-justify">
+          Ce projet a été réalisé dans un cadre pédagogique par <a href="https://www.linkedin.com/in/etienne-barbier-30074448/" target="_blank">Etienne BARBIER</a> dans le cadre du parcours <a href="https://openclassrooms.com/fr/paths/68-developpeur-dapplication-python" target="_blank">Développeur d'application - Python</a> proposé par <a href="https://openclassrooms.com" target="_blank">OpenClassrooms</a>.<br />
+          Il utilise le framework <a href="https://www.djangoproject.com/" target="_blank">Django</a> pour Python côté serveur, le framework <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> pour CSS côté client et en particulier le thème <a href="https://startbootstrap.com/themes/business-casual//" target="_blank">Business Casual</a> de <a href="https://startbootstrap.com" target="_blank">Start Bootstrap</a>.
+        </p>
+        <p class="my-3 text-justify">
+          Ce site est hébergé sur les serveurs de la société <a href="https://www.heroku.com/" target="_blank">Heroku</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock section_one %}
+
+{% block li_legal %}
+  <li class="nav-item active px-lg-4 list-inline-item">
+    <a class="nav-link text-expanded" href="{% url 'legal' %}">Mentions légales
+      <span class="sr-only">(current)</span>
+    </a>
+  </li>
+{% endblock li_legal %}

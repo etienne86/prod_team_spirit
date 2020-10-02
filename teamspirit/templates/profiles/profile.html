@@ -1,0 +1,190 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}Profil{% endblock title %}
+
+{% block section_one %}
+<section id="section_one">
+  <div class="container my-3">
+    <div class="card text-center border-solid">
+      <div class="card-header">
+        <ul id="profile_tab" role="tablist" class="nav nav-tabs card-header-tabs nav-fill">
+          <li class="nav-item">
+            <a class="nav-link active" id="mon-compte" data-toggle="tab" href="#my_account" role="tab" aria-controls="my_account" aria-selected="true">Mon compte</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="etat-civil" data-toggle="tab" href="#my_info" role="tab" aria-controls="my_info" aria-selected="true">État civil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="coordonnees" data-toggle="tab" href="#my_numbers" role="tab" aria-controls="my_numbers" aria-selected="true">Coordonnées</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="fichier-medical" data-toggle="tab" href="#medical_file" role="tab" aria-controls="medical_file" aria-selected="true">Certificat ou licence</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="fichier-identite" data-toggle="tab" href="#id_file" role="tab" aria-controls="id_file" aria-selected="true">Pièce d'identité</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-body">
+        <div class="tab-content" id="signTabContent">
+          
+          <div class="tab-pane fade show active" id="my_account" role="tabpanel" aria-labelledby="mon-compte">
+            <form action="change_password/">
+              <div class="form-group py-4">
+                <div class="row my-3">
+                  <div class="col-12 col-lg-2">
+                    <label>Courriel</label>
+                  </div>
+                  <div class="col-12 col-lg-8">
+                    <input type="email" class="form-control" value="{{ user.email }}" disabled>
+                  </div>
+                </div>
+                <div class="row my-3">
+                  <div class="col-12 offset-lg-2 col-lg-8">
+                    <input id="change_password_button" type="submit" class="btn btn-primary" value="Changer de mot de passe">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="tab-pane fade" id="my_info" role="tabpanel" aria-labelledby="etat-civil">
+            <form action="update_personal_info/">
+              <div class="form-group py-4">
+                <div class="row my-3">
+                  <div class="col-12 col-lg-2">
+                    <label>Nom</label>
+                  </div>
+                  <div class="col-12 col-lg-8">
+                    <input id="last_name_field" type="text" class="form-control" value="{{ user.last_name }}" disabled>
+                  </div>
+                </div>
+                <div class="row my-3">
+                  <div class="col-12 col-lg-2">
+                    <label>Prénom</label>
+                  </div>
+                  <div class="col-12 col-lg-8">
+                    <input id="first_name_field" type="text" class="form-control" value="{{ user.first_name }}" disabled>
+                  </div>
+                </div>
+                <div class="row my-3">
+                  <div class="col-12 offset-lg-2 col-lg-8">
+                    <input id="change_names_button" type="submit" class="btn btn-primary" value="Modifier">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="tab-pane fade" id="my_numbers" role="tabpanel" aria-labelledby="coordonnees">
+            <form action="update_phone_address/">
+              <div class="row my-3">
+                <div class="col-12 col-lg-2">
+                  <label>Téléphone</label>
+                </div>
+                <div class="col-12 col-lg-8">
+                  <input id="phone_field" type="text" class="form-control" disabled {% if user.personal.phone_number %} value="{{ user.personal.phone_number }}" {% endif %}>
+                </div>
+              </div>
+              <div class="row my-3">
+                <div class="col-12 col-lg-2">
+                  <label>Adresse</label>
+                </div>
+                <div class="col-12 col-lg-8">
+                  <input id="label_first_field" type="text" class="form-control" disabled {% if user.personal.address.label_first %} {% if user.personal.address.label_second %} value="{{ user.personal.address.label_first }} - {{ user.personal.address.label_second }}" {% else %} value="{{ user.personal.address.label_first }}" {% endif %} {% endif %}>
+                </div>
+                <div class="col-12 offset-lg-2 col-lg-8">
+                  <input id="postal_code_and_city_field" type="text" class="form-control" disabled {% if user.personal.address.postal_code and user.personal.address.city %} value="{{ user.personal.address.postal_code }} {{ user.personal.address.city }}" {% endif %}>
+                </div>
+                <div class="col-12 offset-lg-2 col-lg-8">
+                  <input id="country_field" type="text" class="form-control" disabled {% if user.personal.address.country %} value="{{ user.personal.address.country }}" {% endif %}>
+                </div>
+              </div>
+              <div class="row my-3">
+                <div class="col-12">
+                  <div class="custom-control custom-checkbox">
+                    <input id="confidential_checkbox" class="custom-control-input" type="checkbox" value="has_private_profile" id="confidential_check" disabled {% if user.personal.has_private_profile %} checked {% endif %}>
+                    <label class="custom-control-label" for="confidential_check">
+                      Garder mes coordonnées confidentielles
+                    </label>
+                  </div>
+                  <div class="row my-3">
+                    <div class="col-12 offset-lg-2 col-lg-8">
+                      <input id="update_phone_address" type="submit" class="btn btn-primary" value="Modifier">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="tab-pane fade" id="medical_file" role="tabpanel" aria-labelledby="fichier-medical">
+            <form action="add_medical_file/">
+              <div class="form-group py-4">
+                <div class="row my-3">
+                  <div class="col-12 col-lg-2">
+                    <label>Certificat médical ou licence</label>
+                  </div>
+                  <div class="col-12 col-lg-8">
+                  {% if user.personal.medical_file %}
+                    <div class="text-left">  
+                      <a id="medical_file_name" href="{{ user.personal.medical_file.url }}">{{ user.personal.medical_file.name }}</a>
+                    </div>
+                  {% else %}
+                    <input id="medical_file_name" class="form-control" value="Aucun fichier sélectionné" disabled>
+                  {% endif %}
+                  </div>
+                </div>
+                <p>Ce document peut être demandé par le bureau de l'association, par exemple en cas d'inscriptions groupées à un événement.</p>
+                <div class="row my-3">
+                  <div class="col-12 offset-lg-2 col-lg-8">
+                    {% if user.personal.medical_file %}
+                      <button id="drop_medical_file_button" type="submit" formaction="drop_medical_file/" class="btn btn-primary">Supprimer</button>
+                    {% else %}
+                      <button id="add_medical_file_button" type="submit" class="btn btn-primary">Ajouter</button>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          
+          <div class="tab-pane fade" id="id_file" role="tabpanel" aria-labelledby="fichier-identite">
+            <form action="add_id_file/">
+              <div class="form-group py-4">
+                <div class="row my-3">
+                  <div class="col-12 col-lg-2">
+                    <label>Pièce d'identité</label>
+                  </div>
+                  <div class="col-12 col-lg-8">
+                    {% if user.personal.id_file %}
+                      <div class="text-left">  
+                        <a id="id_file_name" href="{{ user.personal.id_file.url }}">{{ user.personal.id_file.name }}</a>
+                      </div>
+                    {% else %}
+                      <input id="id_file_name" class="form-control" value="Aucun fichier sélectionné" disabled>
+                    {% endif %}
+                  </div>
+                </div>
+                <p>Ce document peut être demandé par le bureau de l'association, par exemple en cas d'inscriptions groupées à un événement.</p>
+                <div class="row my-3">
+                  <div class="col-12 offset-lg-2 col-lg-8">
+                    {% if user.personal.id_file %}
+                      <button id="drop_id_file_button" type="submit" formaction="drop_id_file/" class="btn btn-primary">Supprimer</button>
+                    {% else %}
+                      <button id="add_id_file_button" type="submit" class="btn btn-primary">Ajouter</button>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock section_one %}

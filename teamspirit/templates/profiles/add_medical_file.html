@@ -1,0 +1,22 @@
+{% extends "profiles/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Mise à jour du certificat médical ou de la licence{% endblock title %}
+
+{% block section_one %}
+  <section>
+    <div class="container my-3">
+      <div class="card text-center border-solid">
+        <div class="card-body">
+          <h1 class="text-primary text-center">Certificat médical ou licence</h1>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% crispy form %}
+          </form>
+          <a href="{% url 'profiles:profile' %}">Annuler</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock section_one %}

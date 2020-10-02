@@ -1,0 +1,17 @@
+.footer {
+  background-color: fade-out($secondary, 0.1);
+  color: $olive-green;
+  .nav-item {
+    .nav-link {
+      color: $olive-green;
+      &:hover {
+        color: fade-out($olive-green, 0.6);
+      }
+    &.active {
+      .nav-link {
+        color: $primary;
+      }
+    }
+    }
+  }
+}

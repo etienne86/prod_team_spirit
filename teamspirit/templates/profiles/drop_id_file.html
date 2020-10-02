@@ -1,0 +1,25 @@
+{% extends "profiles/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Suppression de la pièce d'identité{% endblock title %}
+
+{% block section_one %}
+  <section>
+    <div class="container my-3">
+      <div class="card text-center border-solid">
+        <div class="card-body">
+          <h1 class="text-primary text-center">Suppression de la pièce d'identité</h1>
+          {% if user.personal.id_file %}
+            <p>Confirmez-vous la suppression de <a href="{{ user.personal.id_file.url }}">ce fichier</a> ?</p>
+          {% endif %}
+          <form method="post">
+            {% csrf_token %}
+            {% crispy form %}
+          </form>
+          <a href="{% url 'profiles:profile' %}">Retour sans supprimer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock section_one %}
